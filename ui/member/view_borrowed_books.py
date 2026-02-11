@@ -30,7 +30,7 @@ def view_borrowed_books(app, email):
             card = make_book_card(
                 parent=scrollable,
                 book=book,
-                on_click=lambda s=sku: show_details_page(sku),
+                on_click=lambda s=sku: show_details_page(s),
                 status=rec[2]
             )
             row, col = divmod(idx, 4)

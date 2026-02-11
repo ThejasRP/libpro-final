@@ -111,7 +111,7 @@ def overdue_books(sku=None, email=None, count=False):
             return result[0] if result else 0
 
         query = f"""
-            SELECT SKU, FullName, DaysLate, DueOn, Fine
+            SELECT SKU, FullName, DaysLate, DueOn, Fine, DaysBorrowed, CreatedOn
             FROM BooksRecord
             WHERE {where_clause}
         """

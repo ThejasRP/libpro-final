@@ -23,8 +23,13 @@ def view_books(app, email):
                 card = make_book_card(
                     parent=scrollable,
                     book=book,
-                    on_click=lambda e, isbn=book[1]: show_details_page(
-                        app, email, show_main_page, isbn, write_reviews=True, wishlist_mode="added"
+                    on_click=lambda isbn=book[1]: show_details_page(
+                        app,
+                        email,
+                        show_main_page,
+                        isbn,
+                        write_reviews=True,
+                        wishlist_mode="added"
                     )
                 )
                 card.grid(row=row, column=col, padx=10, pady=10, sticky="nsew")

@@ -11,9 +11,9 @@ column_widths = {
         "SKU": 90,
         "ID": 40,
         "Member": 20,
-        "Days Overdue": 20,
+        "Borrowed On": 20,
         "Return Date": 90,
-        "Fine(Rs.)": 20,
+        "Days Borrowed": 20,
         "Status":10,
         "Returned On":50
     }
@@ -102,7 +102,7 @@ def dashboard_content(app, email, db):
  
         books_tree = ttk.Treeview(
          books_frame,
-         columns=("SKU", "Days Overdue", "Return Date", "Fine(Rs.)"),
+         columns=("SKU", "Borrowed On", "Return Date", "Days Borrowed"),
          show="headings",
          bootstyle="secondary"
         )
@@ -117,13 +117,11 @@ def dashboard_content(app, email, db):
             "",     
             "",     
             "",     
-            "",     
-            "",     
-            ""      
+            ""
         ))
         
         if not overdue_books(email=email) or overdue_books(email=email) == "No overdue records.":
             books_tree.insert("", "end", values=("NO","OVERDUE","RECORDS"))
         else:    
             for rec in overdue_books(email=email):
-                books_tree.insert("", "end", values=(rec[0],rec[2],rec[3],rec[4]))
+                books_tree.insert("", "end", values=(rec[0],rec[6],rec[3],rec[5]))

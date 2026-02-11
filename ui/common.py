@@ -32,22 +32,25 @@ def make_book_card(parent, book, on_click, status=None):
     card = ttk.Frame(parent, width=100, height=160, borderwidth=3, bootstyle="dark")
     card.grid_propagate(False)
 
-    def on_hover(e): card.configure(style="hover.TFrame")
-    def on_leave(e): card.configure(bootstyle="dark")
+    def on_hover(e):
+        card.configure(style="hover.TFrame")
+
+    def on_leave(e):
+        card.configure(bootstyle="dark")
 
     card.bind("<Enter>", on_hover)
     card.bind("<Leave>", on_leave)
 
     title = ttk.Label(
         card,
-        text=f"{book[2]}\t\t\t\t\t", 
+        text=f"{book[2]}\t\t\t\t\t",
         font=("Helvetica", 14, "bold"),
-        style="crimson.TButton", 
+        style="crimson.TButton",
         wraplength=172,
         anchor="center"
     )
     title.pack(padx=5, expand=True, fill="both", anchor="center", side="top")
-    title.bind("<Button-1>", lambda e: on_click(book[1]))
+    title.bind("<Button-1>", lambda e: on_click())
 
     desc = ttk.Label(
         card,
@@ -57,7 +60,7 @@ def make_book_card(parent, book, on_click, status=None):
         justify="left"
     )
     desc.pack(padx=5, expand=True, fill="both")
-    desc.bind("<Button-1>", lambda e: on_click(book[1]))
+    desc.bind("<Button-1>", lambda e: on_click())
 
     author = ttk.Label(
         card,
@@ -65,7 +68,7 @@ def make_book_card(parent, book, on_click, status=None):
         font=("Helvetica", 10)
     )
     author.pack(padx=5, expand=True, fill="both")
-    author.bind("<Button-1>", lambda e: on_click(book[1]))
+    author.bind("<Button-1>", lambda e: on_click())
 
     if status:
         status_label = ttk.Label(
@@ -74,8 +77,8 @@ def make_book_card(parent, book, on_click, status=None):
             font=("Helvetica", 10)
         )
         status_label.pack(padx=5, expand=True, fill="both")
-        status_label.bind("<Button-1>", lambda e: on_click(book[1]))
+        status_label.bind("<Button-1>", lambda e: on_click())
 
-    card.bind("<Button-1>", lambda e: on_click(book[1]))
+    card.bind("<Button-1>", lambda e: on_click())
 
     return card
